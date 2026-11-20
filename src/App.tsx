@@ -5,6 +5,7 @@ import { Funcionamiento } from './paginas/Funcionamiento'
 import { Inicio } from './paginas/Inicio'
 import { Login } from './paginas/Login'
 import { NoEncontrada } from './paginas/NoEncontrada'
+import { Presentacion } from './paginas/Presentacion'
 import { Registro } from './paginas/Registro'
 import { Reservas } from './paginas/Reservas'
 import { RutaProtegida, RutaPublica } from './rutas/Guardias'
@@ -27,6 +28,7 @@ export default function App() {
             <Route path="/" element={<Inicio />} />
             <Route path="/funcionamiento" element={<Funcionamiento />} />
             <Route path="/reservas" element={<Reservas />} />
+            <Route path="/presentacion" element={<Presentacion />} />
           </Route>
         </Route>
 
