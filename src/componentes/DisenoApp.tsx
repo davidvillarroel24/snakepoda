@@ -7,7 +7,8 @@ const SECCIONES = [
   { ruta: '/', texto: 'Inicio', exacta: true },
   { ruta: '/funcionamiento', texto: 'Funcionamiento', exacta: false },
   { ruta: '/reservas', texto: 'Reservas', exacta: false },
-  { ruta: '/presentacion', texto: 'Presentación', exacta: false },
+  { ruta: '/presentacion', texto: 'Plan de negocio', exacta: false },
+  { ruta: '/infraestructura', texto: 'Infraestructura', exacta: false },
 ]
 
 /** Estructura común de las páginas internas: cabecera con navegación, contenido y pie. */

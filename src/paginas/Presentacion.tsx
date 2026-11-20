@@ -1,26 +1,21 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
 import { Logo } from '../componentes/Logo'
-import { DIAPOSITIVAS, PLAN, type Bloque } from '../contenido/presentacion'
+import type { Bloque, Portada as DatosPortada, Presentacion as DatosPresentacion } from '../contenido/presentacion'
 
-// La portada es la diapositiva 0; las demás vienen de DIAPOSITIVAS.
-const TOTAL = DIAPOSITIVAS.length + 1
-
-function Portada() {
+function Portada({ datos }: { datos: DatosPortada }) {
   return (
     <div className="diap-portada">
       <Logo tamano={56} conTexto={false} />
-      <p className="diap-etiqueta">Proyecto final</p>
-      <h2>{PLAN.titulo}</h2>
-      <p className="diap-producto">{PLAN.producto}</p>
-      <p className="texto-suave">
-        {PLAN.asignatura} · {PLAN.carrera}
-      </p>
+      <p className="diap-etiqueta">{datos.etiqueta}</p>
+      <h2>{datos.titulo}</h2>
+      <p className="diap-producto">{datos.subtitulo}</p>
+      <p className="texto-suave">{datos.detalle}</p>
       <ul className="diap-integrantes" aria-label="Integrantes">
-        {PLAN.integrantes.map((n) => (
+        {datos.integrantes.map((n) => (
           <li key={n}>{n}</li>
         ))}
       </ul>
-      <p className="texto-suave">{PLAN.lugar}</p>
+      <p className="texto-suave">{datos.pie}</p>
     </div>
   )
 }
@@ -80,12 +75,15 @@ function VistaBloque({ bloque }: { bloque: Bloque }) {
   }
 }
 
-export function Presentacion() {
+/** Visor de diapositivas. La portada es la número 1; las demás vienen de `datos.diapositivas`. */
+export function Presentacion({ datos }: { datos: DatosPresentacion }) {
+  const diapositivas = datos.diapositivas
+  const TOTAL = diapositivas.length + 1
   const [actual, setActual] = useState(0)
   const marco = useRef<HTMLDivElement>(null)
   const [pantallaCompleta, setPantallaCompleta] = useState(false)
 
-  const ir = useCallback((n: number) => setActual(Math.min(TOTAL - 1, Math.max(0, n))), [])
+  const ir = useCallback((n: number) => setActual(Math.min(TOTAL - 1, Math.max(0, n))), [TOTAL])
 
   useEffect(() => {
     const alTeclear = (e: KeyboardEvent) => {
@@ -107,13 +105,13 @@ export function Presentacion() {
     else void marco.current?.requestFullscreen?.()
   }
 
-  const diap = actual === 0 ? null : DIAPOSITIVAS[actual - 1]
+  const diap = actual === 0 ? null : diapositivas[actual - 1]
 
   return (
     <div className="pagina">
       <header className="encabezado-pagina">
-        <h1>Presentación del plan de negocio</h1>
-        <p className="texto-suave">Usa las flechas del teclado o los botones para pasar de diapositiva.</p>
+        <h1>{datos.titulo}</h1>
+        <p className="texto-suave">{datos.ayuda}</p>
       </header>
 
       <div className={`diap-marco${pantallaCompleta ? ' diap-completa' : ''}`} ref={marco}>
@@ -129,7 +127,7 @@ export function Presentacion() {
               </div>
             </>
           ) : (
-            <Portada />
+            <Portada datos={datos.portada} />
           )}
         </section>
 

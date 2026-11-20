@@ -1,20 +1,28 @@
 // Contenido de la presentación del Plan de Negocio (sección "Presentación").
 // Para cambiar un texto, edítalo aquí: la página no necesita tocarse.
 
-export const PLAN = {
-  titulo: 'Plan de Negocio',
-  producto: 'Sistema Modular de Poda Trepadora «Serpiente»',
-  asignatura: 'Emprendimiento Productivo',
-  carrera: 'TS. Sistemas Informáticos',
-  lugar: 'Cochabamba, Bolivia · noviembre de 2026',
-  integrantes: ['David Jesus Villarroel', 'Luis Zurita', 'Katerine Pinto', 'Luis Gerardo Sejas'],
-}
-
 export type Bloque =
   | { tipo: 'tarjetas'; items: { titulo: string; texto: string }[] }
   | { tipo: 'lista'; titulo?: string; items: string[] }
   | { tipo: 'tabla'; titulo?: string; cabecera: string[]; filas: string[][] }
   | { tipo: 'cita'; texto: string }
+
+export interface Portada {
+  etiqueta: string
+  titulo: string
+  subtitulo: string
+  detalle: string
+  integrantes: string[]
+  pie: string
+}
+
+export interface Presentacion {
+  id: string
+  titulo: string
+  ayuda: string
+  portada: Portada
+  diapositivas: Diapositiva[]
+}
 
 export interface Diapositiva {
   seccion: string
@@ -22,7 +30,7 @@ export interface Diapositiva {
   bloques: Bloque[]
 }
 
-export const DIAPOSITIVAS: Diapositiva[] = [
+const DIAPOSITIVAS_NEGOCIO: Diapositiva[] = [
   {
     seccion: '1 · Resumen ejecutivo',
     titulo: 'Poda segura desde el suelo',
@@ -247,3 +255,18 @@ export const DIAPOSITIVAS: Diapositiva[] = [
     ],
   },
 ]
+
+export const PLAN_NEGOCIO: Presentacion = {
+  id: 'negocio',
+  titulo: 'Presentación del plan de negocio',
+  ayuda: 'Usa las flechas del teclado o los botones para pasar de diapositiva.',
+  portada: {
+    etiqueta: 'Proyecto final',
+    titulo: 'Plan de Negocio',
+    subtitulo: 'Sistema Modular de Poda Trepadora «Serpiente»',
+    detalle: 'Emprendimiento Productivo · TS. Sistemas Informáticos',
+    integrantes: ['David Jesus Villarroel', 'Luis Zurita', 'Katerine Pinto', 'Luis Gerardo Sejas'],
+    pie: 'Cochabamba, Bolivia · noviembre de 2026',
+  },
+  diapositivas: DIAPOSITIVAS_NEGOCIO,
+}

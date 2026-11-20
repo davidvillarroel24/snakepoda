@@ -8,7 +8,7 @@ export const GRUPO = {
   materia: 'Redes de Computadoras II',
   practica: 'Práctica grupal UT5 y UT6',
   docente: 'Ing. José Luis Yacelly R.',
-  dominio: 'snakepoda.com',
+  dominio: 'snakepoda.modaldevj.com',
 }
 
 export type IconoRol = 'lider' | 'servidor' | 'pantalla' | 'pruebas' | 'red'
@@ -22,13 +22,13 @@ export interface Integrante {
 
 export const INTEGRANTES: Integrante[] = [
   {
-    nombre: '',
+    nombre: 'Jesus Villarroel',
     rol: 'Líder de proyecto y DevOps',
     icono: 'lider',
-    tareas: ['Repositorio y tablero en GitHub', 'CI/CD con GitHub Actions', 'Despliegue en Vercel y Cloudflare'],
+    tareas: ['Repositorio en GitHub y tablero en ClickUp', 'CI/CD con GitHub Actions', 'Despliegue en Vercel y Cloudflare'],
   },
   {
-    nombre: '',
+    nombre: 'Joshua Terceros',
     rol: 'Backend y base de datos',
     icono: 'servidor',
     tareas: ['API REST con Node.js y Express', 'Modelo en dbdiagram.io', 'PostgreSQL en Neon'],
@@ -40,13 +40,13 @@ export const INTEGRANTES: Integrante[] = [
     tareas: ['Simulación 3D del robot', 'Acceso y reservas', 'Conexión con la API'],
   },
   {
-    nombre: '',
+    nombre: 'Nataly Mallea',
     rol: 'QA y pruebas',
     icono: 'pruebas',
     tareas: ['Pruebas de la API con Postman', 'Validación de la base de datos', 'Revisión de la simulación'],
   },
   {
-    nombre: '',
+    nombre: 'Luis Sejas',
     rol: 'DNS y redes',
     icono: 'red',
     tareas: ['Dominio y registros DNS', 'Proxy, SSL/TLS y WAF de Cloudflare', 'Limitación de tasa'],
@@ -56,8 +56,8 @@ export const INTEGRANTES: Integrante[] = [
 /** Recorrido de una visita a la plataforma, de la guía UT5/UT6 (sección 4). */
 export const ARQUITECTURA = [
   { capa: 'Cliente', nombre: 'Navegador', detalle: 'Computadora o celular con WebGL', dato: 'HTTPS · 443' },
-  { capa: 'DNS y borde', nombre: 'Cloudflare', detalle: 'DNS, proxy inverso, CDN, WAF y SSL/TLS', dato: 'snakepoda.com' },
-  { capa: 'Servidor', nombre: 'Vercel', detalle: 'API REST con Node.js y Express', dato: 'api.snakepoda.com' },
+  { capa: 'DNS y borde', nombre: 'Cloudflare', detalle: 'DNS, proxy inverso, CDN, WAF y SSL/TLS', dato: 'snakepoda.modaldevj.com' },
+  { capa: 'Servidor', nombre: 'Vercel', detalle: 'API REST con Node.js y Express', dato: 'api-snakepoda.modaldevj.com' },
   { capa: 'Base de datos', nombre: 'Neon', detalle: 'PostgreSQL serverless', dato: 'TCP 5432 · SSL' },
 ] as const
 
